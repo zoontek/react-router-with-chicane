@@ -1,29 +1,30 @@
-import { Link, useSearchParams } from "react-router-dom";
-import { links } from "../Router";
+import { Link } from "@swan-io/chicane";
+import { Router } from "../Router";
 
-export const Teams = () => {
-  const [searchParams] = useSearchParams();
-  const created = searchParams.get("created");
+type Props = {
+  created?: string;
+};
 
+export const Teams = ({ created }: Props) => {
   return (
     <>
-      <Link to={links.Home()}>Back to home page</Link>
+      <Link to={Router.Home()}>Back to home page</Link>
 
       <h2>Teams page</h2>
 
       <nav>
-        <Link to={links.Team({ teamId: "foo" })}>Team foo page</Link>
-        <Link to={links.Team({ teamId: "bar" })}>Team bar page</Link>
+        <Link to={Router.Team({ teamId: "foo" })}>Team foo page</Link>
+        <Link to={Router.Team({ teamId: "bar" })}>Team bar page</Link>
 
         {created != null && (
-          <Link to={links.Team({ teamId: created })}>
+          <Link to={Router.Team({ teamId: created })}>
             Team {created} page ✨
           </Link>
         )}
       </nav>
 
       <div style={{ height: 24 }} />
-      <Link to={links.NewTeam()}>+ Add new team</Link>
+      <Link to={Router.NewTeam()}>+ Add new team</Link>
     </>
   );
 };

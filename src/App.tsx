@@ -1,11 +1,13 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { match } from "ts-pattern";
 import { Home } from "./pages/Home";
 import { NewTeam } from "./pages/NewTeam";
 import { Team } from "./pages/Team";
 import { Teams } from "./pages/Teams";
-import { paths } from "./Router";
+import { Router } from "./Router";
 
 export const App = () => {
+  const route = Router.useRoute(["Home", "NewTeam", "Team", "Teams"]);
+
   return (
     <>
       <h1>
@@ -13,18 +15,23 @@ export const App = () => {
         <a href="https://swan-io.github.io/chicane" target="_blank">
           @swan-io/chicane
         </a>
+        (chicane only)
       </h1>
 
       <hr />
 
-      <BrowserRouter>
-        <Routes>
-          <Route path={paths.Home} element={<Home />} />
-          <Route path={paths.Teams} element={<Teams />} />
-          <Route path={paths.Team} element={<Team />} />
-          <Route path={paths.NewTeam} element={<NewTeam />} />
-        </Routes>
-      </BrowserRouter>
+      {match(route)
+        .with({ name: "Home" }, () => <Home />)
+        .with({ name: "Teams" }, ({ params: { created } }) => (
+          <Teams created={created} />
+        ))
+        .with({ name: "Team" }, ({ params: { teamId } }) => (
+          <Team teamId={teamId} />
+        ))
+        .with({ name: "NewTeam" }, () => <NewTeam />)
+        .otherwise(() => (
+          <h2>Page not found</h2>
+        ))}
     </>
   );
 };

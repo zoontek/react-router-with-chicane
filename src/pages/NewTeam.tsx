@@ -1,14 +1,13 @@
+import { Link } from "@swan-io/chicane";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { links } from "../Router";
+import { Router } from "../Router";
 
 export const NewTeam = () => {
   const [value, setValue] = useState("");
-  const navigate = useNavigate();
 
   return (
     <>
-      <Link to={links.Teams()}>Back to teams page</Link>
+      <Link to={Router.Teams()}>Back to teams page</Link>
 
       <h2>New team page</h2>
 
@@ -26,7 +25,7 @@ export const NewTeam = () => {
       <button
         onClick={(event) => {
           event.preventDefault();
-          navigate(links.Teams({ created: value }), { replace: true });
+          Router.replace("Teams", { created: value });
         }}
       >
         Submit + redirect

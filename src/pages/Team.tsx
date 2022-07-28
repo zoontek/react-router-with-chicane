@@ -1,16 +1,14 @@
-import { Link, useParams } from "react-router-dom";
-import { links } from "../Router";
+import { Link } from "@swan-io/chicane";
+import { Router } from "../Router";
 
-export const Team = () => {
-  const { teamId } = useParams();
+type Props = {
+  teamId: string;
+};
 
-  if (typeof teamId === "undefined") {
-    return <p>No :teamId param provided!</p>;
-  }
-
+export const Team = ({ teamId }: Props) => {
   return (
     <>
-      <Link to={links.Teams()}>Back to teams page</Link>
+      <Link to={Router.Teams()}>Back to teams page</Link>
 
       <h2>Team {teamId} page</h2>
 
