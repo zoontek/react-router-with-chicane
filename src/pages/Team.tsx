@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import { links } from "../Router";
 
 export const Team = () => {
   const { teamId } = useParams();
@@ -9,7 +10,7 @@ export const Team = () => {
 
   return (
     <>
-      <Link to="/teams">Back to teams page</Link>
+      <Link to={links.Teams()}>Back to teams page</Link>
 
       <h2>Team {teamId} page</h2>
 

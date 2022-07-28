@@ -3,6 +3,7 @@ import { Home } from "./pages/Home";
 import { NewTeam } from "./pages/NewTeam";
 import { Team } from "./pages/Team";
 import { Teams } from "./pages/Teams";
+import { paths } from "./Router";
 
 export const App = () => {
   return (
@@ -18,10 +19,10 @@ export const App = () => {
 
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/teams" element={<Teams />} />
-          <Route path="/teams/:teamId" element={<Team />} />
-          <Route path="/teams/new" element={<NewTeam />} />
+          <Route path={paths.Home} element={<Home />} />
+          <Route path={paths.Teams} element={<Teams />} />
+          <Route path={paths.Team} element={<Team />} />
+          <Route path={paths.NewTeam} element={<NewTeam />} />
         </Routes>
       </BrowserRouter>
     </>

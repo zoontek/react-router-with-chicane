@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { links } from "../Router";
 
 export const NewTeam = () => {
   const [value, setValue] = useState("");
@@ -7,7 +8,7 @@ export const NewTeam = () => {
 
   return (
     <>
-      <Link to="/teams">Back to teams page</Link>
+      <Link to={links.Teams()}>Back to teams page</Link>
 
       <h2>New team page</h2>
 
@@ -25,7 +26,7 @@ export const NewTeam = () => {
       <button
         onClick={(event) => {
           event.preventDefault();
-          navigate(`/teams?created=${value}`, { replace: true });
+          navigate(links.Teams({ created: value }), { replace: true });
         }}
       >
         Submit + redirect

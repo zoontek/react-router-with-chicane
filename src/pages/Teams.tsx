@@ -1,4 +1,5 @@
 import { Link, useSearchParams } from "react-router-dom";
+import { links } from "../Router";
 
 export const Teams = () => {
   const [searchParams] = useSearchParams();
@@ -6,21 +7,23 @@ export const Teams = () => {
 
   return (
     <>
-      <Link to="/">Back to home page</Link>
+      <Link to={links.Home()}>Back to home page</Link>
 
       <h2>Teams page</h2>
 
       <nav>
-        <Link to="/teams/foo">Team foo page</Link>
-        <Link to="/teams/bar">Team bar page</Link>
+        <Link to={links.Team({ teamId: "foo" })}>Team foo page</Link>
+        <Link to={links.Team({ teamId: "bar" })}>Team bar page</Link>
 
         {created != null && (
-          <Link to={`/teams/${created}`}>Team {created} page ✨</Link>
+          <Link to={links.Team({ teamId: created })}>
+            Team {created} page ✨
+          </Link>
         )}
       </nav>
 
       <div style={{ height: 24 }} />
-      <Link to="/teams/new">+ Add new team</Link>
+      <Link to={links.NewTeam()}>+ Add new team</Link>
     </>
   );
 };
