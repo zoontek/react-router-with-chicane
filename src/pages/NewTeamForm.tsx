@@ -15,7 +15,7 @@ export const NewTeamForm = () => {
           navigate("/teams?created=baz", { replace: true });
         }}
       >
-        Submit bar team and redirect
+        Submit baz team and redirect
       </button>
     </>
   );
