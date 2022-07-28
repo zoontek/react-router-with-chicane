@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
-import { NewTeamForm } from "./pages/NewTeamForm";
+import { NewTeam } from "./pages/NewTeam";
 import { Team } from "./pages/Team";
 import { Teams } from "./pages/Teams";
 
@@ -21,7 +21,7 @@ export const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/teams" element={<Teams />} />
           <Route path="/teams/:teamId" element={<Team />} />
-          <Route path="/teams/new" element={<NewTeamForm />} />
+          <Route path="/teams/new" element={<NewTeam />} />
         </Routes>
       </BrowserRouter>
     </>

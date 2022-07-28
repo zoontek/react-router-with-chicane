@@ -13,7 +13,10 @@ export const Teams = () => {
       <nav>
         <Link to="/teams/foo">Team foo page</Link>
         <Link to="/teams/bar">Team bar page</Link>
-        {created != null && <Link to="/teams/baz">Team {created} page ✨</Link>}
+
+        {created != null && (
+          <Link to={`/teams/${created}`}>Team {created} page ✨</Link>
+        )}
       </nav>
 
       <div style={{ height: 24 }} />
