@@ -56,7 +56,7 @@ import { paths } from "./Router"
 
 Finally, enjoy safe link creation!
 
-```ts
+```tsx
 import { Link, useNavigate } from "react-router-dom";
 import { links } from "./Router"
 
